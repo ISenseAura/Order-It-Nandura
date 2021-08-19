@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+#customers {
+  font-family: Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+#customers td, #customers th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+#customers tr:nth-child(even){background-color: #f2f2f2;}
+
+#customers tr:hover {background-color: #ddd;}
+
+#customers th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #04AA6D;
+  color: white;
+}
+  
+  input[type=text], select {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+input[type=submit] {
+  width: 100%;
+  background-color: #4CAF50;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+input[type=submit]:hover {
+  background-color: #45a049;
+}
+
+div {
+  border-radius: 5px;
+  background-color: #f2f2f2;
+  padding: 20px;
+}
+  
+</style>
+</head>
+<body>
+  <center> <h1> <%- user %>'s Orders  </h1> 
+  <H2 STYLE="COLOR:RED">
+    <%- err %>
+    </H2>
+  </center>
+
+<table id="customers">
+  <tr>
+    <th> Date & Time </th>
+    <th>Order</th>
+    <th>Contact</th>
+    <th>Address</th>
+      <th>Status</th>
+       
+  </tr>
+  <%- orders %>
+
+</table>
+  <br><br><br><br>
+  <div style="display:none;" id="cc">
+  <center> <h3>Cancel Order of <span id="pname"></span></h3>
+</center>
+  
+
+  <form method="post" action="/cancelorder">
+    <label for="fname">Please enter the Order ID of the order provided in the receipt of your order.</label>
+    <input name="ouid" value="<%- user %>" type="hidden" />
+    <input type="text" id="fname" name="oid" placeholder="Order ID">
+
+    
+  
+    <input type="submit" value="Cancel Order">
+  </form>
+</div>
+  <br><br><br> <center>
+  <input type="submit" onclick="window.location.href='https://justorderit.in'" value="GO BACK TO APP">
+  </center>
+ 
+<script>
+  
+function showOrder(a,b,c,d,e,f,g,h) {
+   
+      document.getElementById("pname").innerHTML = c;
+      
+            document.getElementById("cc").style.display = "block";
+  }
+  
+  
+  </script>
+</body>
+</html>

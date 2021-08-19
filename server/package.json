@@ -1,0 +1,22 @@
+{
+  "name": "orderit_nandura",
+  "version": "1.0.0",
+  "author": "",
+  "description": "An app for online food delivery in Nandura",
+  "main": "./app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app.js"
+  },
+  "dependencies": {
+    "express": "^4.16.3",
+    "helmet": "^3.12.0",
+    "ejs": "^2.6.1",
+    "body-parser": "^1.19.0",
+    "express-session": "^1.16.1",
+    "uniqid": "^5.3.0",
+    "gmail-send": "^1.8.10"
+  },
+  "keywords": [],
+  "license": "ISC"
+}

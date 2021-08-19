@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+#customers {
+  font-family: Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+#customers td, #customers th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+#customers tr:nth-child(even){background-color: #f2f2f2;}
+
+#customers tr:hover {background-color: #ddd;}
+
+#customers th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #04AA6D;
+  color: white;
+}
+</style>
+</head>
+<body>
+  <center> <h1> All Orders </h1> </center>
+
+<table id="customers">
+  <tr>
+    <th> Date & Time </th>
+    <th>Name</th>
+    <th>Contact</th>
+    <th>Address</th>
+     <th>Order ID</th>
+      <th>Status</th>
+       <th>Address</th>
+  </tr>
+  <%- orders %>
+
+</table>
+  <br><br><br><br>
+  <br>
+  <div id="order" style="display:none;">
+  <center>
+  <h2 id="oid"> order id </h2>
+  </center>
+  <hr/>
+  <table id="customers">
+  <tr>
+    <th>Product ID </th>
+  <td id="pid"> ID </td>
+  </tr>
+    <tr>
+    <th>Product Name</th>
+  <td id="pname"> NAME </td>
+  </tr>
+    <tr>
+    <th>Size</th>
+  <td id="ps"> SIZE </td>
+  </tr>
+    <tr>
+    <th>Color</th>
+  <td id="pc"> COLOR </td>
+  </tr>
+
+  <tr>
+    <th>Quantity </th>
+  <td id="pq"> Quantity </td>
+  </tr>
+    <tr>
+    <th>Date & Time </th>
+  <td id="pdt"> Date & Time </td>
+  </tr>
+    <tr>
+    <th>Total Amount</th>
+  <td id="pa"> 199/-</td>
+  </tr>
+    <tr>
+      <td style="background:yellow;color:black;"> <center> <strong> Delivered </strong></center>
+      </td>
+      <td style="background:red;color:white;"> <center> <strong> Canceled </strong> </center>
+      </td>
+</table>
+</div>
+<script>
+  
+  function showOrder(a,b,c,d,e,f,g,h) {
+    document.getElementById("oid").innerHTML = a;
+     document.getElementById("pid").innerHTML = b;
+      document.getElementById("pname").innerHTML = c;
+       document.getElementById("pc").innerHTML = d;
+        document.getElementById("ps").innerHTML = e;
+         document.getElementById("pq").innerHTML = f;
+          document.getElementById("pdt").innerHTML = g;
+           document.getElementById("pa").innerHTML = h;
+            document.getElementById("order").style.display = "block";
+  }
+  
+  </script>
+</body>
+</html>
