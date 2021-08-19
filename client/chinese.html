@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		 <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+
+		<title>Order It</title>
+
+ 		<!-- Google font -->
+ 		<link href="https://fonts.googleapis.com/css?family=Montserrat:400,500,700" rel="stylesheet">
+
+ 		<!-- Bootstrap -->
+ 		<link type="text/css" rel="stylesheet" href="css/bootstrap.min.css"/>
+
+ 		<!-- Slick -->
+ 		<link type="text/css" rel="stylesheet" href="css/slick.css"/>
+ 		<link type="text/css" rel="stylesheet" href="css/slick-theme.css"/>
+
+ 		<!-- nouislider -->
+ 		<link type="text/css" rel="stylesheet" href="css/nouislider.min.css"/>
+
+ 		<!-- Font Awesome Icon -->
+ 		<link rel="stylesheet" href="css/font-awesome.min.css">
+
+ 		<!-- Custom stlylesheet -->
+ 		<link type="text/css" rel="stylesheet" href="css/style.css"/>
+
+		<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+		<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+		<!--[if lt IE 9]>
+		  <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+		  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+		<![endif]-->
+
+    </head>
+	<body>
+<div id="headC"></div>
+		
+		<!-- SECTION -->
+		<div class="section" id="orderpage">
+			<!-- container -->
+			<div class="container">
+				<!-- row -->
+				<div class="row">
+					<!-- Product main img -->
+					<div class="col-md-5 col-md-push-2">
+						<div id="product-main-img">
+							
+							
+						</div>
+					</div>
+					<!-- /Product main img -->
+
+					
+					<!-- /Product thumb imgs -->
+
+					<!-- Product details -->
+					<div class="col-md-5">
+                       
+						<div class="product-details">
+                           
+<br>
+						
+						
+                                
+                                
+                                
+<details>
+  <summary><h4>MANCHURIAN (Dry/Gravy) </h4> </summary>
+  <div class="content">
+   	<div>
+								<h3 class="product-price">Base Price :  <span id="manchBP" name="baseprice" >60/-</span></h3>
+								
+							</div>
+							<p>Please enter the following details.</p>
+
+						
+
+							<div class="add-to-cart">
+								 <div class="quantity buttons_added">
+                                        
+	<input type="button" onclick="remB('manch')" value="-" class="minus"><input id="manchP" type="number" step="1" min="1" max="" name="qtyB" value="1" title="Qty" onkeyup="cal('manch')" class="input-text qty text" size="4" pattern="" inputmode=""><input onclick="addB('manch')" type="button" value="+" class="plus"> PLATE
+</div>
+                                
+                           
+                                
+                              <br><br>
+                                <h5> <b style="color: #D10024;">Manchurian Price : </b> <span id="manchtotal" class="manchP" name="price">60/-</span></h5> 
+                                 <h5> <b style="color: #D10024;">Delivery Charge : </b> <span name="delcharge"  id="delc" class="delcharge" >FREE</span></h5> <hr/>
+                                 <h5> <b style="color: #D10024;">Total Price : </b> <span id="manchtotal2" value="45" class="manchT" name="total">80/-</span></h5> 
+                                <br>
+                                
+  </div>
+      	<button onclick="order('manch')" class="add-to-cart-btn"><i class="fa fa-shopping-cart" ></i> Order Now</button>
+							</div>
+</details>
+              
+                                <script>
+                                    
+                                    let veg = 60;
+                                    let dc = 0;
+                                    let items = {
+                                        "manch" : "Manchurian",
+                                        "noods" : "Noodles",
+                                        "paneer" : "Paneer Chilli",
+                                        "fryrice" : "Fry Rice",
+                                        "finger" : "Finger Chips",
+                                        "bhel" : "Chinese Bhel"
+                                    }
+                                    
+                                    let prices = {
+                                        
+                                    };
+                                    
+                                    fetch('https://mchandle.glitch.me/chinese')
+  .then(response => response.json())
+  .then(function(data) {
+                                   Object.keys(data).forEach(a => {
+                                        prices[a] = data[a];
+                                        document.getElementById(a + "BP").innerHTML = data[a] + "/-";
+                                        document.getElementById(a + "P").innerHTML = data[a] + "/-";
+                                        document.getElementById(a + "total").innerHTML = data[a] + "/-";
+                                     document.getElementById(a + "total2").innerHTML = data[a] + "/-";
+                                        
+                                    });
+   
+});
+
+        
+                                    
+                                    function order(a) {
+                                        let op,bp,bhaji,x,price1,price2,prod1,prod2,total,total2;
+        
+                                                cal(a)
+                                         op = document.getElementById("orderpage");
+                                         bp = document.getElementById("buypage");
+                                         bhaji = document.getElementById(a+"P");
+                                       
+                                         x = parseInt(bhaji.value);
+                                        
+                                         price1 = document.getElementById("price1");
+                                         price2 = document.getElementById("price2");
+                                         prod1 = document.getElementById("prod1");
+                                         prod2 = document.getElementById("prod2");
+                                         total = document.getElementById("totalprice");
+                                         total2 = document.getElementById(a + "total2");
+                                        
+                                        
+                                        op.style.display = "none";
+                                        bp.style.display = "block";  
+                                        
+                                      
+                                     
+                                        
+                                        let html = `<div class="section-title text-center">
+  <h3 class="title">Your Order</h3>
+</div>
+<div class="order-summary">
+  <div class="order-col">
+    <div><strong>PRODUCT</strong></div>
+    <div><strong>TOTAL</strong></div>
+  </div>
+  <div class="order-products">
+    <div class="order-col">
+      <div id="prod1">
+       ${x + " Plate " + items[a]} <input name="product" value = "${x + "plate" + items[a].toLowerCase()}" type="hidden" />
+      </div>
+      <div name="price" id="price1">
+        <input name="price" value = "${x * prices[a]}" type="hidden" /> ${(x * prices[a]) + "/-"}
+      </div>
+    </div>
+  
+  <div class="order-col">
+    <div>Shiping</div>
+    <div>
+      <strong id="delivery" value="10"
+        ><input name="delivery" value="${dc}" type="hidden" /><input name="shop" value="${shop}" type="hidden" />${dc}/-</strong
+      >
+    </div>
+  </div>
+  <div class="order-col">
+    <div><strong>TOTAL</strong></div>
+    <div>
+      <strong class="order-total" name="total" id="totalprice"
+        ><input name="total" value="${total2.value}" type="hidden" />
+<input name="date" value="${Date()}" type="hidden" />
+${total2.innerHTML}</strong
+      >
+    </div>
+  </div>
+</div>
+
+<div class="input-checkbox">
+  <input type="checkbox" required="true" id="terms" />
+  <label for="terms">
+    <span></span>
+    I've read and accept the <a href="#">terms & conditions</a> <br>
+<label style="color:red;display:none;" id="warn"> (Please read and accept the terms & conditions to continue)</label>
+  </label>
+</div>
+<button type="submit" onclick="document.getElementById('warn').style.display ='block'" class="primary-btn order-submit">Place order</button>
+`
+                                        
+                        document.getElementById("proddet").innerHTML = html;                
+
+                                    }
+                                    
+                                     function cancelO() {
+                                        let op = document.getElementById("orderpage");
+                                        let bp = document.getElementById("buypage");
+                                       
+                                        op.style.display = "block";
+                                        bp.style.display = "none";
+
+                                    }
+                                    
+                                    
+                                </script>
+                                
+                                
+                                
+                                
+							
+							<ul class="product-links">
+								<li>Share:</li>
+								<li><a href="#"><i class="fa fa-facebook"></i></a></li>
+								<li><a href="#"><i class="fa fa-twitter"></i></a></li>
+								<li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+								<li><a href="#"><i class="fa fa-envelope"></i></a></li>
+							</ul>
+
+						</div>
+					</div>
+					<!-- /Product details -->
+				</div>
+				<!-- /row -->
+			</div>
+			<!-- /container -->
+		</div>
+		<!-- /SECTION -->
+
+        
+        	<!-- SECTION -->
+	<div class="section" id="buypage" style="display: none">
+			<!-- container -->
+			<div class="container">
+				<!-- row -->
+				<div class="row">
+
+					<div class="col-md-7">
+						<!-- Billing Details -->
+                        <form method="post" onsubmit = "pop('LOADING...')" action="https://mchandle.glitch.me/orderpb">
+						<div class="billing-details">
+							<div class="section-title">
+								<h3 class="title">Enter Details</h3>
+							</div>
+							<div class="form-group">
+								<input class="input" required = "true" type="text" name="name" placeholder="Full Name">
+							</div>
+							
+							<div class="form-group">
+								<input class="input" type="email" name="email" placeholder="Email">
+							</div>
+							<div class="form-group">
+								<input class="input" required = "true" type="text" name="address" placeholder="Address">
+							</div>
+							
+							<div class="form-group">
+								<input class="input" required = "true" type="tel" name="number" placeholder="Phone Number">
+						
+						<!-- /Shiping Details -->
+<br><br>
+						<!-- Order notes -->
+						<div class="order-notes">
+							<textarea class="input" name="notes" placeholder="Order Notes (Not necessary)"></textarea>
+						</div>
+						<!-- /Order notes -->
+					</div>
+
+					<!-- Order Details -->
+					<div class="col-md-5 order-details">
+                        <div id="proddet">
+						
+                        
+                       
+					</div>
+                            </div>
+					<!-- /Order Details -->
+				</div>
+                            </form>
+                         <button onclick="cancelO()" class="primary-btn order-submit" style="float:right;">Cancel order</button>
+				<!-- /row -->
+			</div>
+                        
+			<!-- /container -->
+                </div>
+		</div>
+        </div>
+		<!-- /SECTION -->
+
+		
+
+		<!-- NEWSLETTER -->
+		<div id="newsletter" class="section">
+			<!-- container -->
+			<div class="container">
+				<!-- row -->
+				<div class="row">
+					<div class="col-md-12">
+						<div class="newsletter">
+							<p>Sign Up for the <strong>NEWSLETTER</strong></p>
+							<form>
+								<input class="input" type="email" placeholder="Enter Your Email">
+								<button class="newsletter-btn"><i class="fa fa-envelope"></i> Subscribe</button>
+							</form>
+							<ul class="newsletter-follow">
+								<li>
+									<a href="#"><i class="fa fa-facebook"></i></a>
+								</li>
+								<li>
+									<a href="#"><i class="fa fa-twitter"></i></a>
+								</li>
+								<li>
+									<a href="#"><i class="fa fa-instagram"></i></a>
+								</li>
+								<li>
+									<a href="#"><i class="fa fa-pinterest"></i></a>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+				<!-- /row -->
+			</div>
+			<!-- /container -->
+		</div>
+		<!-- /NEWSLETTER -->
+
+		<!-- FOOTER -->
+		<footer id="footer">
+	
+		</footer>
+		<!-- /FOOTER -->
+
+		<!-- jQuery Plugins -->
+        <script src="js/myjs.js"></script>
+		<script src="js/jquery.min.js"></script>
+		<script src="js/bootstrap.min.js"></script>
+		<script src="js/slick.min.js"></script>
+		<script src="js/nouislider.min.js"></script>
+		<script src="js/jquery.zoom.min.js"></script>
+		<script src="js/main.js"></script>
+
+	</body>
+</html>
